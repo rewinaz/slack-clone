@@ -10,12 +10,11 @@ import Login from "./routes/Login";
 function App() {
   const [user, loading] = useAuthState(auth);
 
-
   return (
     <div className="h-screen flex flex-col">
       {user ? (
         <>
-          <Header />
+          <Header photoUrl={user.photoURL!} displayName={user.displayName!} />
           <div className="flex h-full overflow-hidden">
             <Sidebar />
             <ChatArea />

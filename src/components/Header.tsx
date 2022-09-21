@@ -1,13 +1,25 @@
+import { Avatar } from "@material-ui/core";
 import { AccessTime, HelpOutline, Search } from "@material-ui/icons";
+import { useAuthState } from "react-firebase-hooks/auth";
 import userImg from "../assets/user-solid(1).svg";
+import { auth } from "../firebase";
 
-type Props = {};
+type Props = {
+  photoUrl: string;
+  displayName: string;
+};
 
-const Header = (props: Props) => {
+const Header = ({ photoUrl, displayName }: Props) => {
+  const [user] = useAuthState(auth);
   return (
     <div className="flex items-center w-full h-16 bg-purple-900">
       <div className="flex flex-1 items-center justify-between mx-4">
-        <img className="w-12 h-12 text-white" src={userImg} alt="" />
+        <Avatar
+          onClick={() => auth.signOut()}
+          // className="w-12 h-12 text-white"
+          src={photoUrl}
+          alt={displayName}
+        />
         <AccessTime className="text-white" />
       </div>
 
