@@ -1,14 +1,16 @@
 import Message from "./Message";
 import { collection, serverTimestamp } from "@firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { addDoc, query, where, orderBy } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 import { useAppSelector } from "../reduxHooks";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 type Props = {};
 
 const ChatArea = (props: Props) => {
+  const [user] = useAuthState(auth);
   const channelId = useAppSelector((state) => state.appReducer.roomId);
   const [message, setMessage] = useState("");
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -31,8 +33,8 @@ const ChatArea = (props: Props) => {
           content: message,
           channelId: channelId,
           timestamp: serverTimestamp(),
-          user: "rewina",
-          userImage: "../assets/linkedin_profile.jpg",
+          user: user?.displayName,
+          userImage: user?.photoURL,
         });
         console.log("Document written with ID: ", docRef.id);
         lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
