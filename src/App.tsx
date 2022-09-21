@@ -4,9 +4,20 @@ import Sidebar from "./components/Sidebar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import Login from "./routes/Login";
+const Spinner = require("react-spinkit");
 
 function App() {
   const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return (
+      <div>
+        <div>
+          <Spinner name="pacman" color="yellow" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col">
