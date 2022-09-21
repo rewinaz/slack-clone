@@ -11,7 +11,7 @@ function App() {
 
   if (loading) {
     return (
-      <div>
+      <div className="h-screen flex w-full items-center justify-center">
         <div>
           <Spinner name="pacman" color="yellow" />
         </div>
