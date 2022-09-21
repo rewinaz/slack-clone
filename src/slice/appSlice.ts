@@ -23,5 +23,4 @@ export const appSlice = createSlice({
 
 export const { enterRoom } = appSlice.actions;
 
-
 export default appSlice.reducer;
