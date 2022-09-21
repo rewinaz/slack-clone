@@ -36,7 +36,6 @@ const ChatArea = (props: Props) => {
           user: user?.displayName,
           userImage: user?.photoURL,
         });
-        console.log("Document written with ID: ", docRef.id);
         lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
         setMessage("");
       } catch (e) {

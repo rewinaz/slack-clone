@@ -8,7 +8,6 @@ const Login = (props: Props) => {
     e.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("Success");
       })
       .catch((err: Error) => {
         alert(err.message);
