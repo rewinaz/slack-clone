@@ -1,7 +1,6 @@
 import { Avatar } from "@material-ui/core";
 import { AccessTime, HelpOutline, Search } from "@material-ui/icons";
 import { useAuthState } from "react-firebase-hooks/auth";
-import userImg from "../assets/user-solid(1).svg";
 import { auth } from "../firebase";
 
 type Props = {
@@ -16,7 +15,7 @@ const Header = ({ photoUrl, displayName }: Props) => {
       <div className="flex flex-1 items-center justify-between mx-4">
         <Avatar
           onClick={() => auth.signOut()}
-          // className="w-12 h-12 text-white"
+          className="cursor-pointer"
           src={photoUrl}
           alt={displayName}
         />

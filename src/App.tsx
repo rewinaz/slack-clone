@@ -3,8 +3,6 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
-import { useEffect } from "react";
-import { redirect } from "react-router-dom";
 import Login from "./routes/Login";
 
 function App() {
